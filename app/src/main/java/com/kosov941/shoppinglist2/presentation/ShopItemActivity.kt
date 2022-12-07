@@ -9,7 +9,7 @@ import com.kosov941.shoppinglist2.domain.ShopItem
 import com.kosov941.shoppinglist2.presentation.ShopItemFragment.Companion.newInstanceAddItem
 import com.kosov941.shoppinglist2.presentation.ShopItemFragment.Companion.newInstanceEditItem
 
-class ShopItemActivity : AppCompatActivity() {
+class ShopItemActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
 
     private var screenMode = MODE_UNKNOWN
     private var shopItemId = ShopItem.UNDEFINED_ID
@@ -22,6 +22,11 @@ class ShopItemActivity : AppCompatActivity() {
             launchRightMode()
         }
     }
+
+    override fun onEditingFinished() {
+        finish()
+    }
+
 
     private fun launchRightMode() {
         val fragment = when (screenMode) {
